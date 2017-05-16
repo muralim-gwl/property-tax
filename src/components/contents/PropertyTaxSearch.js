@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid,Row,Col,Table } from 'react-bootstrap';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import {brown500,red500} from 'material-ui/styles/colors';
 import DatePicker from 'material-ui/DatePicker';
@@ -8,16 +8,16 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 // import DataTable from './DataTable';
-const $ = require('jquery');
-const dt = require('datatables.net-bs');
-const buttons = require('datatables.net-buttons-bs');
-
-require('datatables.net-buttons/js/buttons.colVis.js'); // Column visibility
-require('datatables.net-buttons/js/buttons.html5.js'); // HTML 5 file export
-require('datatables.net-buttons/js/buttons.flash.js'); // Flash file export
-require('datatables.net-buttons/js/buttons.print.js'); // Print view button
-
-var flag = 0;
+// const $ = require('jquery');
+// const dt = require('datatables.net-bs');
+// const buttons = require('datatables.net-buttons-bs');
+//
+// require('datatables.net-buttons/js/buttons.colVis.js'); // Column visibility
+// require('datatables.net-buttons/js/buttons.html5.js'); // HTML 5 file export
+// require('datatables.net-buttons/js/buttons.flash.js'); // Flash file export
+// require('datatables.net-buttons/js/buttons.print.js'); // Print view button
+//
+// var flag = 0;
 const styles = {
   errorStyle: {
     color: red500,
@@ -37,11 +37,11 @@ const styles = {
 };
 
 class PropertyTaxSearch extends Component {
-  constructor(props) {
-       super(props);
-   }
+  // constructor(props) {
+  //      super(props);
+  //  }
 
-  
+
 
   componentWillMount()
   {
@@ -49,25 +49,25 @@ class PropertyTaxSearch extends Component {
 
   }
 
-  componentWillUpdate() {
-    if(flag == 1) {
-      flag = 0;
-      $('#propertyTaxTable').dataTable().fnDestroy();
-    }
-  }
+  // componentWillUpdate() {
+  //   if(flag == 1) {
+  //     flag = 0;
+  //     $('#propertyTaxTable').dataTable().fnDestroy();
+  //   }
+  // }
 
-  componentDidUpdate(prevProps, prevState) {
-      if (prevState.agreements.length != this.state.agreements.length) {
-          $('#propertyTaxTable').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                     'copy', 'csv', 'excel', 'pdf', 'print'
-             ],
-             ordering: false,
-             bDestroy: true
-          });
-      }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //     if (prevState.agreements.length != this.state.agreements.length) {
+  //         $('#propertyTaxTable').DataTable({
+  //           dom: 'Bfrtip',
+  //           buttons: [
+  //                    'copy', 'csv', 'excel', 'pdf', 'print'
+  //            ],
+  //            ordering: false,
+  //            bDestroy: true
+  //         });
+  //     }
+  // }
 
 
 
@@ -332,26 +332,3 @@ class PropertyTaxSearch extends Component {
 }
 
 export default PropertyTaxSearch;
-
-
-// <Grid>
-//     <Row className="show-grid">
-//      <Col xs={12} md={8}><code>&lt;{'Col xs={12} md={8}'} /&gt;</code></Col>
-//      <Col xs={6} md={4}><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
-//     </Row>
-//
-//     <Row className="show-grid">
-//      <Col xs={6} md={4}><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
-//      <Col xs={6} md={4}><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
-//      <Col xsHidden md={4}><code>&lt;{'Col xsHidden md={4}'} /&gt;</code></Col>
-//     </Row>
-//
-//     <Row className="show-grid">
-//      <Col xs={6} xsOffset={6}><code>&lt;{'Col xs={6} xsOffset={6}'} /&gt;</code></Col>
-//     </Row>
-//
-//     <Row className="show-grid">
-//      <Col md={6} mdPush={6}><code>&lt;{'Col md={6} mdPush={6}'} /&gt;</code></Col>
-//      <Col md={6} mdPull={6}><code>&lt;{'Col md={6} mdPull={6}'} /&gt;</code></Col>
-//     </Row>
-//     </Grid>
