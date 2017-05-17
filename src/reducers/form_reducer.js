@@ -6,7 +6,8 @@ const defaultState = {
     dialogOpen: false,
     fieldErrors: {},
     isFormValid: false,
-    validationData: {}
+    validationData: {},
+    showTable:false
 };
 
 export default (state = defaultState, action) => {
@@ -93,6 +94,12 @@ export default (state = defaultState, action) => {
                 fieldErrors: action.errors
             }
 
+        case "SHOW_TABLE":
+            return {
+              ...state,
+              showTable:action.state
+            }
+
         default:
             return state;
     }
@@ -113,6 +120,7 @@ function validate(isRequired, pattern, name, value, validationData) {
         }
     }
     if (pattern.toString().length > 0) {
+      if (value!="") {
         if (pattern.test(value)) {
             if (_.indexOf(validationData.pattern.current, name) == -1) {
                 validationData.pattern.current.push(name);
@@ -123,10 +131,17 @@ function validate(isRequired, pattern, name, value, validationData) {
             });
             errorText = "Invalid field data";
         }
+      }
     }
+    if(!isRequired && value=="")
+    {
+      errorText="";
+    }
+    // var isFormValid=false;
+    // (validationData.required.required.length == validationData.required.current.length) && (validationData.pattern.required.length == validationData.pattern.current.length)
     return {
         errorText: errorText,
         validationData: validationData,
-        isFormValid: (validationData.required.required.length == validationData.required.current.length) && (validationData.pattern.required.length == validationData.pattern.current.length)
+        isFormValid:(validationData.required.required.length == validationData.required.current.length) && (errorText=="")
     };
 }
