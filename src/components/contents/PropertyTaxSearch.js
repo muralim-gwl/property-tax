@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Grid, Row, Col, Table, DropdownButton} from 'react-bootstrap';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
-import {brown500, red500,white} from 'material-ui/styles/colors';
+import {brown500, red500,white,orange800} from 'material-ui/styles/colors';
 import DatePicker from 'material-ui/DatePicker';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -127,8 +127,8 @@ class PropertyTaxSearch extends Component {
         <Card>
           <CardHeader title={< strong style = {{color:brown500}} > Result < /strong>}/>
           <CardText>
-        <Table id="propertyTaxTable" responsive>
-          <thead>
+        <Table id="propertyTaxTable" bordered responsive>
+          <thead style={{backgroundColor:brown500,color:"white",fontWeight: "normal"}}>
             <tr>
               <th>#</th>
               <th>Assessment Number</th>
@@ -344,13 +344,13 @@ class PropertyTaxSearch extends Component {
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.doorNo
                           ? fieldErrors.doorNo
-                          : ""} value={propertyTaxSearch.doorNo?propertyTaxSearch.doorNo:""} onChange={(e) => handleChange(e, "doorNo", true, /^([\d,/.\-]){10}$/g)} hintText="eg:-3233312323" floatingLabelText="Door number" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                          : ""} value={propertyTaxSearch.doorNo?propertyTaxSearch.doorNo:""} onChange={(e) => handleChange(e, "doorNo", true, /^([\d,/.\-]){10}$/g)} hintText="eg:-3233312323" floatingLabelText="Door number" />
                       </Col>
 
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.assessmentNo
                           ? fieldErrors.assessmentNo
-                          : ""} value={propertyTaxSearch.assessmentNo?propertyTaxSearch.assessmentNo:""} onChange={(e) => handleChange(e, "assessmentNo", false, /^\d{15}$/g)} hintText="eg:-123456789123456" floatingLabelText="Assessment number" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                          : ""} value={propertyTaxSearch.assessmentNo?propertyTaxSearch.assessmentNo:""} onChange={(e) => handleChange(e, "assessmentNo", false, /^\d{15}$/g)} hintText="eg:-123456789123456" floatingLabelText="Assessment number"/>
                       </Col>
                     </Row>
 
@@ -358,13 +358,13 @@ class PropertyTaxSearch extends Component {
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.mobileNo
                           ? fieldErrors.mobileNo
-                          : ""} value={propertyTaxSearch.mobileNo?propertyTaxSearch.mobileNo:""} onChange={(e) => handleChange(e, "mobileNo", false, /^\d{10}$/g)} hintText="Mobile number" floatingLabelText="Mobile number" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                          : ""} value={propertyTaxSearch.mobileNo?propertyTaxSearch.mobileNo:""} onChange={(e) => handleChange(e, "mobileNo", false, /^\d{10}$/g)} hintText="Mobile number" floatingLabelText="Mobile number" />
                       </Col>
 
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.aadharNo
                           ? fieldErrors.aadharNo
-                          : ""} value={propertyTaxSearch.aadharNo?propertyTaxSearch.aadharNo:""} onChange={(e) => handleChange(e, "aadharNo", false, /^\d{12}$/g)} hintText="Aadhar number " floatingLabelText="Aadhar number " floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                          : ""} value={propertyTaxSearch.aadharNo?propertyTaxSearch.aadharNo:""} onChange={(e) => handleChange(e, "aadharNo", false, /^\d{12}$/g)} hintText="Aadhar number " floatingLabelText="Aadhar number " />
                       </Col>
                     </Row>
                   </Grid>
@@ -381,13 +381,13 @@ class PropertyTaxSearch extends Component {
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.ownerName
                           ? fieldErrors.ownerName
-                          : ""} value={propertyTaxSearch.ownerName?propertyTaxSearch.ownerName:""} onChange={(e) => handleChange(e, "ownerName", false, "")} hintText="Owner Name" floatingLabelText="Owner Name" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                          : ""} value={propertyTaxSearch.ownerName?propertyTaxSearch.ownerName:""} onChange={(e) => handleChange(e, "ownerName", false, "")} hintText="Owner Name" floatingLabelText="Owner Name" />
                       </Col>
 
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.oldAssessmentNo
                           ? fieldErrors.oldAssessmentNo
-                          : ""} value={propertyTaxSearch.oldAssessmentNo?propertyTaxSearch.oldAssessmentNo:""} onChange={(e) => handleChange(e, "oldAssessmentNo", false, /^\d{15}$/g)} hintText="Old Assessment Number" floatingLabelText="Old Assessment Number" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                          : ""} value={propertyTaxSearch.oldAssessmentNo?propertyTaxSearch.oldAssessmentNo:""} onChange={(e) => handleChange(e, "oldAssessmentNo", false, /^\d{15}$/g)} hintText="Old Assessment Number" floatingLabelText="Old Assessment Number" />
                       </Col>
                     </Row>
 
@@ -409,7 +409,7 @@ class PropertyTaxSearch extends Component {
                                         value: value
                                       }
                                     };
-                                    handleChange(e, "zone", false, "")}} floatingLabelText="Zone	Drop " floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}>
+                                    handleChange(e, "zone", false, "")}} floatingLabelText="Zone	Drop " >
                                   <MenuItem value={1} primaryText="Never"/>
                                   <MenuItem value={2} primaryText="Every Night"/>
                                   <MenuItem value={3} primaryText="Weeknights"/>
@@ -429,7 +429,7 @@ class PropertyTaxSearch extends Component {
                                       }
                                     };
                                     handleChange(e, "ward", false, "")}
-                                  } floatingLabelText="Ward" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}>
+                                  } floatingLabelText="Ward" >
                                   <MenuItem value={1} primaryText="Never"/>
                                   <MenuItem value={2} primaryText="Every Night"/>
                                   <MenuItem value={3} primaryText="Weeknights"/>
@@ -449,7 +449,7 @@ class PropertyTaxSearch extends Component {
                                         value: value
                                       }
                                     };
-                                    handleChange(e, "location", false, "")}} floatingLabelText="Location" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}>
+                                    handleChange(e, "location", false, "")}} floatingLabelText="Location" >
                                   <MenuItem value={1} primaryText="Never"/>
                                   <MenuItem value={2} primaryText="Every Night"/>
                                   <MenuItem value={3} primaryText="Weeknights"/>
@@ -485,7 +485,7 @@ class PropertyTaxSearch extends Component {
                                     }
                                   };
                                   handleChange(e, "demandFrom", false, "")
-                                }} floatingLabelText="Demand From" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                                }} floatingLabelText="Demand From" />
 
                               </Col>
 
@@ -501,7 +501,7 @@ class PropertyTaxSearch extends Component {
                                     }
                                   };
                                   handleChange(e, "demandTo", false, "")
-                                }} floatingLabelText="Demand To" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                                }} floatingLabelText="Demand To" />
 
                               </Col>
                             </Row>
