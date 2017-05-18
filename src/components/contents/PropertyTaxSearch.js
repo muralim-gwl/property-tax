@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {Grid, Row, Col, Table} from 'react-bootstrap';
+import {Grid, Row, Col, Table, DropdownButton} from 'react-bootstrap';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import {brown500, red500,white} from 'material-ui/styles/colors';
@@ -39,12 +39,18 @@ const styles = {
   },
   floatingLabelFocusStyle: {
     color: brown500
+  },
+  customWidth: {
+    width:100
   }
 };
 
 class PropertyTaxSearch extends Component {
   constructor(props) {
        super(props);
+       this.state = {
+         searchBtnText : 'Search'
+       }
        this.search=this.search.bind(this);
    }
 
@@ -71,10 +77,12 @@ class PropertyTaxSearch extends Component {
 
   search(e)
   {
-      let {showTable}=this.props;
+      let {showTable,changeButtonText}=this.props;
       e.preventDefault();
       console.log("Show Table");
       flag=1;
+      changeButtonText("Search Again");
+      // this.setState({searchBtnText:'Search Again'})
       showTable(true);
   }
 
@@ -106,7 +114,8 @@ class PropertyTaxSearch extends Component {
       isTableShow,
       handleChange,
       handleChangeNextOne,
-      handleChangeNextTwo
+      handleChangeNextTwo,
+      buttonText
     } = this.props;
     let {search} = this;
     console.log(propertyTaxSearch);
@@ -121,12 +130,13 @@ class PropertyTaxSearch extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
+              <th>Assessment Number</th>
+              <th>Owner Name</th>
+              <th>Address</th>
+              <th>Current Demand</th>
+              <th>Arrears Demand</th>
+              <th>Property usage</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -138,6 +148,12 @@ class PropertyTaxSearch extends Component {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" pullRight>
+                  <MenuItem eventKey="1">Create</MenuItem>
+                  <MenuItem eventKey="2">Update</MenuItem>
+              </DropdownButton>
+              </td>
             </tr>
             <tr>
               <td>2</td>
@@ -147,6 +163,12 @@ class PropertyTaxSearch extends Component {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" pullRight>
+                  <MenuItem eventKey="1">Create</MenuItem>
+                  <MenuItem eventKey="2">Update</MenuItem>
+              </DropdownButton>
+              </td>
             </tr>
             <tr>
               <td>3</td>
@@ -156,6 +178,12 @@ class PropertyTaxSearch extends Component {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
+              <td>
+                <DropdownButton title="Action" pullRight>
+                    <MenuItem eventKey="1">Create</MenuItem>
+                    <MenuItem eventKey="2">Update</MenuItem>
+                </DropdownButton>
+              </td>
             </tr>
           </tbody>
         </Table>
@@ -179,7 +207,7 @@ class PropertyTaxSearch extends Component {
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.doorNo
                           ? fieldErrors.doorNo
-                          : ""} value={propertyTaxSearch.doorNo?propertyTaxSearch.doorNo:""} onChange={(e) => handleChange(e, "doorNo", true, /^\d{10}$/g)} hintText="eg:-3233312323" floatingLabelText="Door number" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
+                          : ""} value={propertyTaxSearch.doorNo?propertyTaxSearch.doorNo:""} onChange={(e) => handleChange(e, "doorNo", true, /^([\d,/.\-]){10}$/g)} hintText="eg:-3233312323" floatingLabelText="Door number" floatingLabelFocusStyle={styles.floatingLabelFocusStyle} underlineStyle={styles.underlineStyle} underlineFocusStyle={styles.underlineFocusStyle}/>
                       </Col>
 
                       <Col xs={12} md={6}>
@@ -351,7 +379,7 @@ class PropertyTaxSearch extends Component {
               <div style={{
                 float: "center"
               }}>
-                <RaisedButton type="submit" disabled={!isFormValid} label="Search" backgroundColor={brown500} labelColor={white}/>
+                <RaisedButton type="submit" disabled={!isFormValid} label={buttonText} backgroundColor={brown500} labelColor={white}/>
                 <RaisedButton label="Close"/>
               </div>
             </CardText>
@@ -369,7 +397,7 @@ class PropertyTaxSearch extends Component {
   }
 }
 
-const mapStateToProps = state => ({propertyTaxSearch: state.form.form, fieldErrors: state.form.fieldErrors, isFormValid: state.form.isFormValid,isTableShow:state.form.showTable});
+const mapStateToProps = state => ({propertyTaxSearch: state.form.form, fieldErrors: state.form.fieldErrors, isFormValid: state.form.isFormValid,isTableShow:state.form.showTable,buttonText:state.form.buttonText});
 
 const mapDispatchToProps = dispatch => ({
   initForm: () => {
@@ -414,7 +442,12 @@ const mapDispatchToProps = dispatch => ({
   showTable:(state)=>
   {
     dispatch({type:"SHOW_TABLE",state});
+  },
+  changeButtonText:(text)=>
+  {
+    dispatch({type:"BUTTON_TEXT",text});
   }
+
 
 });
 

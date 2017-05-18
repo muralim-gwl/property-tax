@@ -7,7 +7,8 @@ const defaultState = {
     fieldErrors: {},
     isFormValid: false,
     validationData: {},
-    showTable:false
+    showTable:false,
+    buttonText:"Search"
 };
 
 export default (state = defaultState, action) => {
@@ -99,7 +100,11 @@ export default (state = defaultState, action) => {
               ...state,
               showTable:action.state
             }
-
+            case "BUTTON_TEXT":
+                return {
+                  ...state,
+                  buttonText:action.text
+                }
         default:
             return state;
     }
