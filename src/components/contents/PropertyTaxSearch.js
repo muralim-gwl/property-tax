@@ -96,12 +96,13 @@ class PropertyTaxSearch extends Component {
   componentDidUpdate(prevProps, prevState) {
       if (true) {
           $('#propertyTaxTable').DataTable({
-            dom: 'Bfrtip',
+            dom: 'lBfrtip',
             buttons: [
                      'copy', 'csv', 'excel', 'pdf', 'print'
              ],
              ordering: false,
-             bDestroy: true
+             bDestroy: true,
+
           });
       }
   }
@@ -149,9 +150,9 @@ class PropertyTaxSearch extends Component {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>
-              <DropdownButton title="Action" pullRight>
-                  <MenuItem eventKey="1">Create</MenuItem>
-                  <MenuItem eventKey="2">Update</MenuItem>
+              <DropdownButton title="Action" id="dropdown-1" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
               </DropdownButton>
               </td>
             </tr>
@@ -164,12 +165,148 @@ class PropertyTaxSearch extends Component {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>
-              <DropdownButton title="Action" pullRight>
-                  <MenuItem eventKey="1">Create</MenuItem>
-                  <MenuItem eventKey="2">Update</MenuItem>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
               </DropdownButton>
               </td>
             </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>
+              <DropdownButton title="Action" id="dropdown-2" pullRight>
+                  <MenuItem>Create</MenuItem>
+                  <MenuItem>Update</MenuItem>
+              </DropdownButton>
+              </td>
+            </tr>
+
             <tr>
               <td>3</td>
               <td>Table cell</td>
@@ -179,9 +316,9 @@ class PropertyTaxSearch extends Component {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>
-                <DropdownButton title="Action" pullRight>
-                    <MenuItem eventKey="1">Create</MenuItem>
-                    <MenuItem eventKey="2">Update</MenuItem>
+                <DropdownButton title="Action" id="dropdown-3" pullRight>
+                    <MenuItem>Create</MenuItem>
+                    <MenuItem>Update</MenuItem>
                 </DropdownButton>
               </td>
             </tr>

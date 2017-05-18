@@ -17,7 +17,12 @@ const styles = {
       color:white,
       fontSize:12,
       paddingTop:16,
-      paddingBottom:16
+      paddingBottom:16,
+    },
+
+    putDown : {
+      position:'absolute',
+      bottom:0
     }
 }
 
