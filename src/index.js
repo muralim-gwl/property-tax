@@ -23,9 +23,9 @@ import App from "./components/App"
 const muiTheme = getMuiTheme({
   palette: {
 
-    primary1Color: brown500,
-    primary2Color: brown500,
-    textColor:brown500
+    primary1Color: "#5a3e1b",
+    primary2Color: "#5a3e1b",
+    textColor:"#5a3e1b"
   }
 });
 

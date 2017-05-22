@@ -125,10 +125,10 @@ class PropertyTaxSearch extends Component {
     {
       return (
         <Card>
-          <CardHeader title={< strong style = {{color:brown500}} > Result < /strong>}/>
+          <CardHeader title={< strong style = {{color:"#5a3e1b"}} > Result < /strong>}/>
           <CardText>
-        <Table id="propertyTaxTable" bordered responsive>
-          <thead style={{backgroundColor:brown500,color:"white",fontWeight: "normal"}}>
+        <Table id="propertyTaxTable" style={{color:"black",fontWeight: "normal"}} bordered responsive>
+          <thead style={{backgroundColor:"#f2851f",color:"white"}}>
             <tr>
               <th>#</th>
               <th>Assessment Number</th>
@@ -334,7 +334,7 @@ class PropertyTaxSearch extends Component {
           search(e)
         }}>
           <Card>
-            <CardHeader title={< strong style = {{color:brown500}} > Search Property < /strong>}/>
+            <CardHeader title={< strong style = {{color:"#5a3e1b"}} > Search Property < /strong>}/>
 
             <CardText>
               <Card>
@@ -344,13 +344,13 @@ class PropertyTaxSearch extends Component {
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.doorNo
                           ? fieldErrors.doorNo
-                          : ""} value={propertyTaxSearch.doorNo?propertyTaxSearch.doorNo:""} onChange={(e) => handleChange(e, "doorNo", true, /^([\d,/.\-]){10}$/g)} hintText="eg:-3233312323" floatingLabelText="Door number" />
+                          : ""} id="doorNo" value={propertyTaxSearch.doorNo?propertyTaxSearch.doorNo:""} onChange={(e) => handleChange(e, "doorNo", false, /^([\d,/.\-]){6,10}$/g)} hintText="eg:-3233312323" floatingLabelText="Door number" />
                       </Col>
 
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.assessmentNo
                           ? fieldErrors.assessmentNo
-                          : ""} value={propertyTaxSearch.assessmentNo?propertyTaxSearch.assessmentNo:""} onChange={(e) => handleChange(e, "assessmentNo", false, /^\d{15}$/g)} hintText="eg:-123456789123456" floatingLabelText="Assessment number"/>
+                          : ""} value={propertyTaxSearch.assessmentNo?propertyTaxSearch.assessmentNo:""} onChange={(e) => handleChange(e, "assessmentNo", false, /^\d{3,15}$/g)} hintText="eg:-123456789123456" floatingLabelText="Assessment number"/>
                       </Col>
                     </Row>
 
@@ -373,7 +373,7 @@ class PropertyTaxSearch extends Component {
               </Card>
 
               <Card>
-                <CardHeader title={< strong style = {{color:brown500}} > Advance Search < /strong>} actAsExpander={true} showExpandableButton={true}/>
+                <CardHeader title={< strong style = {{color:"#5a3e1b"}} > Advance Search < /strong>} actAsExpander={true} showExpandableButton={true}/>
 
                 <CardText expandable={true}>
                   <Grid>
@@ -387,14 +387,14 @@ class PropertyTaxSearch extends Component {
                       <Col xs={12} md={6}>
                         <TextField errorText={fieldErrors.oldAssessmentNo
                           ? fieldErrors.oldAssessmentNo
-                          : ""} value={propertyTaxSearch.oldAssessmentNo?propertyTaxSearch.oldAssessmentNo:""} onChange={(e) => handleChange(e, "oldAssessmentNo", false, /^\d{15}$/g)} hintText="Old Assessment Number" floatingLabelText="Old Assessment Number" />
+                          : ""} value={propertyTaxSearch.oldAssessmentNo?propertyTaxSearch.oldAssessmentNo:""} onChange={(e) => handleChange(e, "oldAssessmentNo", false, /^\d{3,15}$/g)} hintText="Old Assessment Number" floatingLabelText="Old Assessment Number" />
                       </Col>
                     </Row>
 
                     <Row>
 
                       <Card>
-                        <CardHeader title={< strong style = {{color:brown500}} > Boundary < /strong>}/>
+                        <CardHeader title={< strong style = {{color:"#5a3e1b"}} > Boundary < /strong>}/>
 
                         <CardText>
                           <Grid>
@@ -468,40 +468,23 @@ class PropertyTaxSearch extends Component {
 
                     <Row>
                       <Card>
-                        <CardHeader title={< strong style = {{color:brown500}} > Search Property by Demand < /strong>}/>
+                        <CardHeader title={< strong style = {{color:"#5a3e1b"}} > Search Property by Demand < /strong>}/>
                         <CardText>
                           <Grid>
                             <Row>
                               <Col xs={12} md={6}>
+                              <TextField errorText={fieldErrors.demandFrom
+                                ? fieldErrors.demandFrom
+                                : ""} value={propertyTaxSearch.demandFrom?propertyTaxSearch.demandFrom:""} onChange={(e) => handleChange(e, "demandFrom", false, /^\d$/g)} hintText="Demand From" floatingLabelText="Demand From" />
 
-                                <DatePicker errorText={fieldErrors.demandFrom
-                                  ? fieldErrors.demandFrom
-                                  : ""} defaultDate={propertyTaxSearch.demandFrom
-                                  ? new Date(propertyTaxSearch.demandFrom)
-                                  : new Date()} onChange={(nothing, date) => {
-                                  var e = {
-                                    target: {
-                                      value: date
-                                    }
-                                  };
-                                  handleChange(e, "demandFrom", false, "")
-                                }} floatingLabelText="Demand From" />
 
                               </Col>
 
                               <Col xs={12} md={6}>
-                                <DatePicker errorText={fieldErrors.demandTo
-                                  ? fieldErrors.demandTo
-                                  : ""} defaultDate={propertyTaxSearch.demandTo
-                                  ? new Date(propertyTaxSearch.demandTo)
-                                  : new Date()} onChange={(nothing, date) => {
-                                  var e = {
-                                    target: {
-                                      value: date
-                                    }
-                                  };
-                                  handleChange(e, "demandTo", false, "")
-                                }} floatingLabelText="Demand To" />
+                              <TextField errorText={fieldErrors.demandTo
+                                ? fieldErrors.demandTo
+                                : ""} value={propertyTaxSearch.demandTo?propertyTaxSearch.demandTo:""} onChange={(e) => handleChange(e, "demandTo", false, /^\d$/g)} hintText="Demand To" floatingLabelText="Demand To" />
+
 
                               </Col>
                             </Row>
@@ -516,7 +499,7 @@ class PropertyTaxSearch extends Component {
               <div style={{
                 float: "center"
               }}>
-                <RaisedButton type="submit" disabled={!isFormValid} label={buttonText} backgroundColor={brown500} labelColor={white}/>
+                <RaisedButton type="submit" disabled={!isFormValid} label={buttonText} backgroundColor={"#5a3e1b"} labelColor={white}/>
                 <RaisedButton label="Close"/>
               </div>
             </CardText>
@@ -543,7 +526,7 @@ const mapDispatchToProps = dispatch => ({
       validationData: {
         required: {
           current: [],
-          required: ["doorNo"]
+          required: [ ]
         },
         pattern: {
           current: [],

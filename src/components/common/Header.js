@@ -28,7 +28,7 @@ class Header extends Component {
   render() {
     return (
       <div className="Header">
-            <AppBar style={{backgroundColor: brown500}}
+            <AppBar
               title="Property Tax"
               iconElementLeft={<Logo />}
               iconElementRight={<RightIcon/>}
