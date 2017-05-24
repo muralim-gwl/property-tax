@@ -12,13 +12,15 @@ import PropertyType from './components/contents/PropertyType';
 import Occupancy from './components/contents/Occupancy';
 import MutationReason from './components/contents/MutationReason';
 import BuildingClassification from './components/contents/BuildingClassification';
+import CreateVacantLand from'./components/contents/CreateVacantLand'
 
 // import App from "./components/App";
 
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={PropertyTaxSearch}/>
+      <Route exact path='/' component={CreateVacantLand}/>
+      <Route exact path='/PropertyTaxSearch' component={PropertyTaxSearch}/>
       <Route exact path='/test' component={Test}/>
       <Route exact path='/floor-type' component={FloorType}/>
       <Route exact path='/roof-type' component={RoofType}/>
