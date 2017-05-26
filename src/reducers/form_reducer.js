@@ -86,7 +86,7 @@ export default(state = defaultState, action) => {
       return {
         form: {},
         fieldErrors: {},
-        validationData: action.validationData
+        validationData: action.validationData,
         msg: '',
         dialogOpen: false,
         isFormValid: false,
