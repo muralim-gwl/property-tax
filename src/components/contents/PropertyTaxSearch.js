@@ -57,12 +57,7 @@ class PropertyTaxSearch extends Component {
 
   componentWillMount()
   {
-    let response=Api.commonApiPost("egov-location/boundarys", "boundariesByBndryTypeNameAndHierarchyTypeName", "", { boundaryTypeName: "WARD", hierarchyTypeName: "ADMINISTRATION" }).then(function(response)
-    {
-      console.log(response);
-    },function(err) {
-        alert(err);
-    });
+
     //call boundary service fetch wards,location,zone data
   }
 
@@ -70,7 +65,14 @@ class PropertyTaxSearch extends Component {
   {
     let {initForm} = this.props;
     initForm();
-
+    let {toggleDailogAndSetText}=this.props;
+    let response=Api.commonApiPost("egov-location/boundarys", "boundariesByBndryTypeNameAndHierarchyTypeName", "", { boundaryTypeName: "WARD", hierarchyTypeName: "ADMINISTRATION" }).then(function(response)
+    {
+    // ?toggleDailogAndSetText(true,"Succefully")
+      console.log(response);
+    },function(err) {
+        // toggleDailogAndSetText(true,err)
+    });
 
   }
 
@@ -573,9 +575,10 @@ const mapDispatchToProps = dispatch => ({
   changeButtonText:(text)=>
   {
     dispatch({type:"BUTTON_TEXT",text});
+  },
+  toggleDailogAndSetText: (dailogState,msg) => {
+    dispatch({type: "TOGGLE_DAILOG_AND_SET_TEXT", dailogState,msg});
   }
-
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyTaxSearch);

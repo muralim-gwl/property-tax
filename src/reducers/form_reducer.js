@@ -109,6 +109,12 @@ export default(state = defaultState, action) => {
         ...state,
         buttonText: action.text
       }
+    case "TOGGLE_DAILOG_AND_SET_TEXT":
+      return {
+        ...state,
+        msg:action.msg,
+        dialogOpen:action.dailogState,
+      }
     default:
       return state;
   }

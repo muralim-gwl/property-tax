@@ -35,16 +35,12 @@ var tenantId="ap.kurnool";
 
 module.exports = {
   commonApiPost: (context, resource = "", action = "", queryObject = {},body={})=> {
-        var url = "/" + context + (resource ? "/" + resource : "") + (action ? "/" + action : "") + (queryObject ? "?" : "");
-        var i=0;
+        var url = "/" + context + (resource ? "/" + resource : "") + (action ? "/" + action : "");
+        url +="?tenantId="+tenantId;
         for (var variable in queryObject) {
-            if (queryObject[variable] && i==1) {
+            if (queryObject[variable]) {
                 url += "&" + variable + "=" + queryObject[variable];
             }
-            else {
-              url +="tenantId="+tenantId+"&"+variable + "=" + queryObject[variable];
-            }
-            i++;
         }
         body["RequestInfo"]=requestInfo;
         console.log(body);
