@@ -7,11 +7,15 @@ var instance = axios.create({
     // timeout: 5000,
     headers: {
       "Content-Type":"application/json",
-      "SESSIONID":"57243622-20fe-4e2e-b8bc-4c5770e12867",
-      "JSESSIONID":"z_qgmjRKDY29LV7RZsAJcFfNd2G3bEh8-m0KgZe0.ip-10-0-0-100",
-      "Authorization":"Basic Og=="
+      // "SESSIONID":"75dedd21-1145-4745-a8aa-1790a737b7c5",
+      // "JSESSIONID":"Nw2kKeNF6Eu42vtXypb3kP4fER1ghjXNMNISiIF5.ip-10-0-0-100",
+      // "Authorization":"Basic Og=="
     }
 });
+
+document.cookie = "SESSIONID=75dedd21-1145-4745-a8aa-1790a737b7c5; JSESSIONID=Nw2kKeNF6Eu42vtXypb3kP4fER1ghjXNMNISiIF5.ip-10-0-0-100; Authorization=Basic Og==";
+
+var authToken = localStorage.getItem("auth-token");
 
 //request info from cookies
 var requestInfo = {
@@ -25,9 +29,9 @@ var requestInfo = {
     "requesterId": "61",
     "authToken": authToken
 };
-
-var tenantId = "ap." + window.location.origin.split("-")[0].split("//")[1];
-
+//uncomment for ap
+// var tenantId = "ap." + window.location.origin.split("-")[0].split("//")[1];
+var tenantId="ap.kurnool";
 
 module.exports = {
   commonApiPost: (context, resource = "", action = "", queryObject = {},body={})=> {
@@ -38,11 +42,12 @@ module.exports = {
                 url += "&" + variable + "=" + queryObject[variable];
             }
             else {
-              url +=variable + "=" + queryObject[variable];
+              url +="tenantId="+tenantId+"&"+variable + "=" + queryObject[variable];
             }
             i++;
         }
         body["RequestInfo"]=requestInfo;
+        console.log(body);
         return instance.post(url, body).then(function(response) {
             return response.data;
         }).catch(function(response) {

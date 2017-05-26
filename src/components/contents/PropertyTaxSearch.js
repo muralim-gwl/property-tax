@@ -10,6 +10,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import DataTable from '../common/Table';
+import Api from '../../api/pTAPIS';
 
 const $ = require('jquery');
 $.DataTable = require('datatables.net');
@@ -56,6 +57,12 @@ class PropertyTaxSearch extends Component {
 
   componentWillMount()
   {
+    let response=Api.commonApiPost("egov-location/boundarys", "boundariesByBndryTypeNameAndHierarchyTypeName", "", { boundaryTypeName: "WARD", hierarchyTypeName: "ADMINISTRATION" }).then(function(response)
+    {
+      console.log(response);
+    },function(err) {
+        alert(err);
+    });
     //call boundary service fetch wards,location,zone data
   }
 
