@@ -66,12 +66,12 @@ class PropertyTaxSearch extends Component {
     let {initForm} = this.props;
     initForm();
     let {toggleDailogAndSetText}=this.props;
-    let response=Api.commonApiPost("egov-location/boundarys", "boundariesByBndryTypeNameAndHierarchyTypeName", "", { boundaryTypeName: "WARD", hierarchyTypeName: "ADMINISTRATION" }).then(function(response)
-    {
-
-    },function(err) {
-        toggleDailogAndSetText(true,err)
-    });
+    // let response=Api.commonApiPost("egov-location/boundarys", "boundariesByBndryTypeNameAndHierarchyTypeName", "", { boundaryTypeName: "WARD", hierarchyTypeName: "ADMINISTRATION" }).then(function(response)
+    // {
+    //
+    // },function(err) {
+    //     toggleDailogAndSetText(true,err)
+    // });
 
   }
 
