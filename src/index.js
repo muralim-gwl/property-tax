@@ -11,14 +11,14 @@ import registerServiceWorker from './registerServiceWorker';
 import './styles/application.css';
 import './styles/vistyle.css';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
+import App from "./components/App"
+// import router from "./router";
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-import App from "./components/App"
-// import router from "./router";
+
 
 
 const muiTheme = getMuiTheme({
