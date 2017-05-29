@@ -7,6 +7,7 @@ import {brown500} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // import './index.css';
+import registerServiceWorker from './registerServiceWorker';
 import './styles/application.css';
 import './styles/vistyle.css';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -37,3 +38,4 @@ ReactDOM.render(
     </HashRouter>
   </MuiThemeProvider>
 </Provider>, document.getElementById('root'));
+registerServiceWorker();

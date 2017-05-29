@@ -68,10 +68,9 @@ class PropertyTaxSearch extends Component {
     let {toggleDailogAndSetText}=this.props;
     let response=Api.commonApiPost("egov-location/boundarys", "boundariesByBndryTypeNameAndHierarchyTypeName", "", { boundaryTypeName: "WARD", hierarchyTypeName: "ADMINISTRATION" }).then(function(response)
     {
-    // ?toggleDailogAndSetText(true,"Succefully")
-      console.log(response);
+
     },function(err) {
-        // toggleDailogAndSetText(true,err)
+        toggleDailogAndSetText(true,err)
     });
 
   }
