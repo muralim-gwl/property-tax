@@ -10,6 +10,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import DataTable from '../common/Table';
+import Api from '../../api/pTAPIS';
 
 const $ = require('jquery');
 $.DataTable = require('datatables.net');
@@ -56,6 +57,7 @@ class PropertyTaxSearch extends Component {
 
   componentWillMount()
   {
+
     //call boundary service fetch wards,location,zone data
   }
 
@@ -63,7 +65,13 @@ class PropertyTaxSearch extends Component {
   {
     let {initForm} = this.props;
     initForm();
-
+    let {toggleDailogAndSetText}=this.props;
+    // let response=Api.commonApiPost("egov-location/boundarys", "boundariesByBndryTypeNameAndHierarchyTypeName", "", { boundaryTypeName: "WARD", hierarchyTypeName: "ADMINISTRATION" }).then(function(response)
+    // {
+    //
+    // },function(err) {
+    //     toggleDailogAndSetText(true,err)
+    // });
 
   }
 
@@ -566,9 +574,10 @@ const mapDispatchToProps = dispatch => ({
   changeButtonText:(text)=>
   {
     dispatch({type:"BUTTON_TEXT",text});
+  },
+  toggleDailogAndSetText: (dailogState,msg) => {
+    dispatch({type: "TOGGLE_DAILOG_AND_SET_TEXT", dailogState,msg});
   }
-
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyTaxSearch);

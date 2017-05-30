@@ -33,6 +33,8 @@ class Header extends Component {
               iconElementLeft={<Logo />}
               iconElementRight={<RightIcon/>}
             />
+            {/*<div> Your userid is invalid, please check its format</div>*/}
+          {/*  <div className="text-right" id="google_translate_element"></div>*/}
       </div>
     );
   }
