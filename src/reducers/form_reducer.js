@@ -8,11 +8,83 @@ const defaultState = {
   isFormValid: false,
   validationData: {},
   showTable: false,
-  buttonText: "Search"
+  buttonText: "Search",
+  editIndex: -1
 };
 
 export default(state = defaultState, action) => {
   switch (action.type) {
+
+    case "PUSH_ONE":
+
+          if (!state.form.hasOwnProperty(action.formArray)) {
+            state.form[action.formArray]=[];
+          }
+
+          return {
+            ...state,
+            form: {
+              ...state.form,
+              [action.formArray]: [
+                ...state.form[action.formArray],
+                   state.form[action.formData]
+              ]
+            }
+          }
+
+    case "RESET_OBJECT":
+
+        return {
+          ...state,
+          form: {
+            ...state.form,
+            [action.object]:null
+          }
+        }
+
+    case "UPDATE_OBJECT":
+
+      state.form[action.objectName][state.editIndex]=state.form[action.object]
+
+        return {
+          ...state,
+          form: {
+            ...state.form,
+          [action.objectName]: state.form[action.objectName].map((e,i) => e )
+          }
+        }
+
+    case "EDIT_OBJECT":
+
+        return {
+          ...state,
+          form: {
+            ...state.form,
+            [action.objectName]:action.object
+          }
+        }
+
+    case "EDIT_INDEX":
+
+      return {
+        ...state,
+        editIndex: action.index
+      }
+
+    case "DELETE_OBJECT":
+
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          [action.property]:[
+            ...state.form[action.property].slice(0, action.index),
+            ...state.form[action.property].slice(action.index+1)
+          ]
+        }
+      }
+
+
     case "SET_FORM":
       return {
         ...state,
@@ -39,26 +111,30 @@ export default(state = defaultState, action) => {
         isFormValid: validationData.isFormValid
       }
 
-    case "HANDLE_CHANGE_NEXT_ONE":
-      validationData = undefined;
-      validationData = validate(action.isRequired, action.pattern, action.propertyOne, action.value, state.validationData);
-      return {
-        ...state,
-        form: {
-          ...state.form,
-          [action.property]: {
-            ...state.form[action.property],
-            [action.propertyOne]: action.value
-          }
-        },
-        fieldErrors: {
-          ...state.fieldErrors,
-          [action.propertyOne]: validationData.errorText
-        },
-        validationData: validationData.validationData,
-        isFormValid: validationData.isFormValid
-      }
+      case "HANDLE_CHANGE_NEXT_ONE":
 
+        validationData = undefined;
+        validationData = validate(action.isRequired, action.pattern, action.propertyOne, action.value, state.validationData);
+        return {
+          ...state,
+          form: {
+            ...state.form,
+            [action.property]: {
+              ...state.form[action.property],
+              [action.propertyOne]: action.value
+            }
+          },
+          fieldErrors: {
+            ...state.fieldErrors,
+            [action.property]: {
+              ...state.fieldErrors[action.property],
+              [action.propertyOne]: validationData.errorText
+            }
+
+          },
+          validationData: validationData.validationData,
+          isFormValid: validationData.isFormValid
+        }
     case "HANDLE_CHANGE_NEXT_TWO":
       let validationData = undefined;
       validationData = validate(action.isRequired, action.pattern, action.propertyTwo, action.value, state.validationData);
