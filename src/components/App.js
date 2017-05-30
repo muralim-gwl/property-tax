@@ -12,7 +12,7 @@ import PropertyTaxSearch from "./contents/PropertyTaxSearch";
 import router from "../router";
 
 
-class App extends Component {
+class App extends Component {  
   render() {
     var {toggleDailogAndSetText,isDialogOpen,msg}=this.props;
     const actions = [
@@ -36,6 +36,10 @@ class App extends Component {
             >
             {msg}
           </Dialog>
+
+
+
+
       </div>
     );
   }

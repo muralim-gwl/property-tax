@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import {brown500} from 'material-ui/styles/colors';
 
 const styles = {
@@ -25,14 +28,31 @@ const RightIcon = () => {
 }
 
 class Header extends Component {
+  constructor(props) {
+   super(props);
+   this.state = {open: false};
+  }
+
+  handleToggle = () => this.setState({open: !this.state.open});
+
+
   render() {
     return (
-      <div className="Header">
+      <div className="Header" >
             <AppBar
               title="Property Tax"
+              onTitleTouchTap={this.handleToggle}
               iconElementLeft={<Logo />}
               iconElementRight={<RightIcon/>}
             />
+
+            <Drawer containerClassName="side-bar" open={this.state.open}>
+              <MenuItem>
+                <Link to="/PropertyTaxSearch">
+                    Property Tax Search
+                </Link></MenuItem>
+
+            </Drawer>
             {/*<div> Your userid is invalid, please check its format</div>*/}
           {/*  <div className="text-right" id="google_translate_element"></div>*/}
       </div>

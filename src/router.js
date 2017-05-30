@@ -23,8 +23,8 @@ import CreateVacantLand from'./components/contents/CreateVacantLand'
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={CreateVacantLand}/>
-      <Route exact path='/PropertyTaxSearch' component={PropertyTaxSearch}/>
+      <Route exact path='/CreateVacantLand' component={CreateVacantLand}/>
+      <Route exact path='/' component={PropertyTaxSearch}/>
       <Route exact path='/test' component={Test}/>
       <Route exact path='/floor-type' component={FloorType}/>
       <Route exact path='/roof-type' component={RoofType}/>
