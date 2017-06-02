@@ -6,6 +6,14 @@ body{
 
 }
 
+.side-bar {
+  margin-top: 64px;
+}
+
+.side-bar a{
+	color: rgb(90, 62, 27)
+}
+
 .goog-te-banner-frame.skiptranslate {
     display: none !important;
     }
